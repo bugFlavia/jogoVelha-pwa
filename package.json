@@ -1,0 +1,15 @@
+{
+  "name": "renataovelha",
+  "version": "1.0.0",
+  "description": "I'm a mirrorball",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "serve ."
+  },
+  "author": "mariaJosé",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
