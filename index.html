@@ -12,6 +12,16 @@
 </head>
 <body>
     <div class="verdade">
+        
+            <p><input type="text" id="jogador1" placeholder="Nome jogador 1" required/>
+               <input type="text" id="jogador2" placeholder="Nome jogador 2" required/></p>
+
+               <p><p id="pontos1"></p><p id="pontos2"></p></p>
+
+               <button id="iniciar" onclick="renatao()">Iniciar</button>
+        
+               <h1 id="jogadores"></h1>
+
         <div class="maluquice">
             <button id="1"></button>
             <button id="2"></button>
@@ -23,9 +33,10 @@
             <button id="8"></button>
             <button id="9"></button>
           </div>
-          <button onclick="renatao()">Reiniciar</button>
           <h2 id="jogador"></h2>
+          <button id="iniciar" onclick="reiniciar()">Reiniciar</button>
     </div>
+    
     <script src='js/script.js'></script>
 </body>
 </html>

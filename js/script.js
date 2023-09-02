@@ -5,15 +5,25 @@ window.onload = () =>{
     }
 }
 
-let pontos= [];
+let pontos;
+let pontuacao1 = 0
+let pontuacao2 = 0
+
+const jogador1 = document.querySelector("#jogador1")
+const jogador2 = document.querySelector("#jogador2")
+
+const pontos1 = document.getElementById("pontos1")
+const pontos2 = document.getElementById("pontos2")
+
 let cat = "Olivia";
+
 const jogador = document.getElementById("jogador");
 
 const imagem = (elemento) => {
   if (cat === "Olivia") {
-    elemento.target.style.backgroundImage = "url('https://i.pinimg.com/236x/5b/ec/85/5bec852724aa9e4537cce8a0f114de67.jpg')";
+    elemento.target.style.backgroundImage = "url('./imagens/meredith.jpg')";
   } else {
-    elemento.target.style.backgroundImage = "url('https://i.pinimg.com/236x/ca/fb/46/cafb46a13484751022e18040560e1684.jpg')";
+    elemento.target.style.backgroundImage = "url('./imagens/olivia.jpg')";
   }
 };
 
@@ -28,16 +38,27 @@ let vitorias = [
   [3, 5, 7],
 ];
 
+function atualizarPontuacao() {
+  pontos1.textContent = pontuacao1;
+  pontos2.textContent = pontuacao2;
+  }
+
 function renatao() {
+  pontos = [];
+
+  document.getElementById("jogadores").innerHTML = document.getElementById("jogador1").value + " X" + document.getElementById("jogador2").value
+  document.getElementById("pontos1").innerHTML = pontuacao1;
+  document.getElementById("pontos2").innerHTML = pontuacao2;
   jogador.innerHTML = `Jogada: ${cat}`;
 
   document.querySelectorAll(".maluquice button").forEach((item) => {
     item.style.backgroundImage = "";
     item.addEventListener("click", marcaRenatao);
+
   });
 }
 
-renatao();
+//renatao();
 
 function marcaRenatao(e) {
   const index = e.target.getAttribute("id");
@@ -45,10 +66,13 @@ function marcaRenatao(e) {
   e.target.removeEventListener("click", marcaRenatao);
   pontos[index] = cat;
 
-  cat = cat === "Olivia" ? "Meredith" : "Olivia";
-  marcador.innerHTML = `JOGADOR DA VEZ: ${cat}`;
+  setTimeout(() => {
+    verificaRenatao();
+  }, [100]);
 
-  verificaRenatao()
+  cat = cat === "Olivia" ? "Meredith" : "Olivia";
+  jogador.innerHTML = `Jogada: ${cat}`;
+
 }
 
 function verificaRenatao() {
@@ -56,18 +80,42 @@ function verificaRenatao() {
 
   const items = pontos
     .map((item, i) => [item, i])
-    .filter((item) => item[0] === catLastMove)
+    .filter((item) => item[0] === historicoPontos)
     .map((item) => item[1]);
 
   for (pos of vitorias) {
     if (pos.every((item) => items.includes(item))) {
-      alert("O JOGADOR '" + catLastMove + "' GANHOU!");
+      alert(historicoPontos + " Venceu!");
+      if(historicoPontos=== "Olivia"){
+        pontuacao1 +1
+        atualizarPontuacao()
+      }else{
+        pontuacao2 +1
+        atualizarPontuacao()
+      }
+      renatao()
       return;
     }
   }
 
   if (pontos.filter((item) => item).length === 9) {
-    alert("DEU EMPATE!");
+    alert("Velha!");
+    renatao()
     return;
   }
+}
+
+function reiniciar() {
+  pontos = [];
+  document.querySelectorAll(".maluquice button").forEach((item) => {
+    item.style.backgroundImage = "";
+    item.removeEventListener("click", marcaRenatao);
+
+  });
+
+  jogador1.value = ''
+  jogador2.value = ''
+  document.getElementById("jogadores").innerHTML = ''
+  jogador.innerHTML = ''
+  
 }
