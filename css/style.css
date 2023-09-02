@@ -34,9 +34,10 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 border-radius: 9px;
 margin-left: auto;
 margin-right: auto;
+margin-top: 30px;
   padding-top: 30px; 
 width: 70%;
-  height:750px;
+  height:1000px;
 background-color: white;
 text-align: center;
 display: block;
@@ -45,6 +46,8 @@ display: block;
 
 .verdade img{
   margin-top: 20px;
+  width: 150px;
+  height: 150px;
   margin-bottom: 20px;
 }
 

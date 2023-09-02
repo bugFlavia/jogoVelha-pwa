@@ -20,9 +20,9 @@ const jogador = document.getElementById("jogador");
 
 const imagem = (elemento) => {
   if (cat === "Olivia") {
-    elemento.target.style.backgroundImage = "url('./imagens/meredith.jpg')";
-  } else {
     elemento.target.style.backgroundImage = "url('./imagens/olivia.jpg')";
+  } else {
+    elemento.target.style.backgroundImage = "url('./imagens/meredith.jpg')";
   }
 };
 
