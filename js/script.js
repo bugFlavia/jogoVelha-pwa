@@ -8,7 +8,6 @@ window.onload = () =>{
 let pontos;
 let pontuacao1 = 0
 let pontuacao2 = 0
-
 const jogador1 = document.querySelector("#jogador1")
 const jogador2 = document.querySelector("#jogador2")
 
@@ -46,7 +45,7 @@ function atualizarPontuacao() {
 function renatao() {
   pontos = [];
 
-  document.getElementById("jogadores").innerHTML = document.getElementById("jogador1").value + " X" + document.getElementById("jogador2").value
+  document.getElementById("jogadores").innerHTML = document.getElementById("jogador1").value + " X " + document.getElementById("jogador2").value
   document.getElementById("pontos1").innerHTML = pontuacao1;
   document.getElementById("pontos2").innerHTML = pontuacao2;
   jogador.innerHTML = `Jogada: ${cat}`;
@@ -87,10 +86,10 @@ function verificaRenatao() {
     if (pos.every((item) => items.includes(item))) {
       alert(historicoPontos + " Venceu!");
       if(historicoPontos=== "Olivia"){
-        pontuacao1 +1
+        pontuacao1++
         atualizarPontuacao()
       }else{
-        pontuacao2 +1
+        pontuacao2++
         atualizarPontuacao()
       }
       renatao()
@@ -116,6 +115,10 @@ function reiniciar() {
   jogador1.value = ''
   jogador2.value = ''
   document.getElementById("jogadores").innerHTML = ''
+  document.getElementById("pontos1").innerHTML = ''
+  document.getElementById("pontos2").innerHTML = ''
   jogador.innerHTML = ''
-  
+  pontuacao1 = 0
+  pontuacao2 = 0  
+  atualizarPontuacao()
 }
